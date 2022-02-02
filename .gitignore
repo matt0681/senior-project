@@ -8,6 +8,9 @@
 
 # Ignore these files:
 .idea/
+venv/
+!modules/
+!tests/
 
 #venv/pyvenv.cfg
 #venv/Include
