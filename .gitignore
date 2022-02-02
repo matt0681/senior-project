@@ -4,10 +4,10 @@
 #README.md
 #tests
 
-venv/Include
-venv/Lib
-venv/Scripts
-venv/pyvenv.cfg
+/venv/Include
+/venv/Lib
+/venv/Scripts
+/venv/pyvenv.cfg
 .idea
 
 
