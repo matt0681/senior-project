@@ -7,14 +7,10 @@
 # docs
 
 # Ignore these files:
-<<<<<<< HEAD
-.idea
-=======
 .idea/
 venv/
 !modules/
 !tests/
->>>>>>> b38235bbf5d54348d1b969ba5b9d0b2cb85898d9
 
 #venv/pyvenv.cfg
 #venv/Include
