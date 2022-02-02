@@ -7,9 +7,9 @@
 # docs
 
 # Ignore these files:
-.idea
-venv/pyvenv.cfg
+.idea/
 
+#venv/pyvenv.cfg
 #venv/Include
 #venv/Lib
 #venv/Scripts
