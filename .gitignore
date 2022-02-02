@@ -1,16 +1,21 @@
-#docs
-#.gitignore
-#LICENSE
-#README.md
-#tests
+# Keep these files:
+# .gitignore
+# LICENSE
+# README.md
+# tests
+# modules
+# docs
 
-/venv/Include
-/venv/Lib
-/venv/Scripts
-/venv/pyvenv.cfg
+# Ignore these files:
 .idea
+venv/pyvenv.cfg
+
+#venv/Include
+#venv/Lib
+#venv/Scripts
 
 
+# Other random files:
 ## Byte-compiled / optimized / DLL files
 #__pycache__/
 #*.py[cod]
