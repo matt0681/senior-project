@@ -1,19 +1,9 @@
-## Necessary Imports
 import scipy
 import matplotlib
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.io.wavfile import write
 from scipy.fft import fft, fftfreq, rfft, rfftfreq
-
-
-
-
-
-
-
-
-
 
 
 SAMPLE_RATE = 44100  # Hertz
@@ -70,3 +60,4 @@ print(len(y_f))
 ## This plots the new fourier transform.
 plt.plot(x_f, np.abs(y_f))
 plt.show()
+
