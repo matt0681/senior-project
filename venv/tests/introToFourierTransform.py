@@ -56,7 +56,6 @@ NUM_SAMPLES = SAMPLE_RATE * DURATION
 y_f = rfft(normalized_tone)
 x_f = rfftfreq(NUM_SAMPLES, 1 / SAMPLE_RATE)
 
-print(len(y_f))
 ## This plots the new fourier transform.
 plt.plot(x_f, np.abs(y_f))
 plt.show()
