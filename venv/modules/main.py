@@ -31,14 +31,13 @@ chord_y_data = np.sin(np.pi * 880 * chord_x_data) + np.sin(np.pi * 1100 * chord_
 #
 # GRAPHING OF THE WAVE
 #
-newXvals = chord_x_data
-newYvals = [np.abs((i) * 360) for i in chord_y_data]
+Xvals = chord_x_data
+Yvals = [np.abs((i) * 360) for i in chord_y_data]
 
-for y in newYvals:
-    turtle.forward(4)
-    turtle.setheading(y)
+for i in Yvals:
+    turtle.setheading(np.abs(i) * 360)
+    turtle.forward(8)
 
-turtle.forward(50)
 
 turtle.hideturtle()
 turtle.done()
