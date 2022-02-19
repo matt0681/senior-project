@@ -1,16 +1,25 @@
+# Necessary Imports
 import pyaudio
 import struct
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+from scipy.fftpack import fft
 
+# https://www.youtube.com/watch?v=RHmTgapLu4s
 
+"""
+This file creates a window which displays two graphs. After reading input from the microphone, the first graph
+displays the time/amplitude of the input audio signal. The seconf graph shows the time/frequency of the signal.
+"""
 
-# Various needed Variables
-SAMPLES_PER_FRAME = 4096        # How many audio samples per frame to display
+# Variables
+SAMPLES_PER_FRAME = 2048        # How many audio samples per frame to display
 AUDIO_FORMAT = pyaudio.paInt16  # bytes per sample
 CHANNELS = 1    # monosound
 RATE = 44100    # samples per second (Hz)
+Y_MAX = 10000
+Y_MIN = -10000
 
 
 # Creates an instance of PyAudio
@@ -29,43 +38,59 @@ stream = pyAudio.open(
 
 
 # Creates a graph to plot the microphone input onto.
-fig, ax = plt.subplots()
+fig, (axAmp, axFreq) = plt.subplots(2, figsize= (15, 8))
 
 
 # Creates a range of x values for the time/amplitude graph.
 # The values are every even number from 0 to two times the samples per frame.
 # Ex. [0, 2, 4, 6, 8, ..., 4094] when SamplesPerFrame=2048
 x_vals = np.arange(0, SAMPLES_PER_FRAME * 2, 2)
+x_fft = np.linspace(0, RATE, SAMPLES_PER_FRAME)
 
 
 # This graphs the x_vals and for the y values it takes a random number between 0 and 1.
 # We will change the y values later on in the code.
 # np.random.rand() creates a list of the same size as SAMPLES_PER_FRAME where each element
 # is a random number between 0 and 1.
-line, = ax.plot(x_vals, np.random.rand(SAMPLES_PER_FRAME))
+line, = axAmp.plot(x_vals, np.random.rand(SAMPLES_PER_FRAME), '-', lw= 2)
+line_fft, = axFreq.semilogx(x_fft, np.random.rand(SAMPLES_PER_FRAME), '-', lw= 2)
 
 
-# Sets the x and y range of the graph and shows the plot.
-ax.set_ylim(-512, 512)
-ax.set_xlim(-10, SAMPLES_PER_FRAME)
+axAmp.set_title("Audio Input Time/ Amplitude Graph")
+axAmp.set_xlabel("Time (Samples)")
+axAmp.set_ylabel("Amplitude")
+axAmp.set_ylim(Y_MIN, Y_MAX)
+axAmp.set_xlim(-10, SAMPLES_PER_FRAME)
+
+axFreq.set_ylim(0, 1)
+axFreq.set_xlim(10, 10000)
+
 plt.show(block=False)
 
 
-# Starts the real-time plotting of the microphone's input.
-# Only stops when graph window is exited.
+frame_count = 0
+start_time = time.time()
 while True:
-    # Reads in SAMPLES_PER_FRAME amount of microphone input data.
+
     mic_in_data = stream.read(SAMPLES_PER_FRAME)
 
-    # This section of code takes the input data and formats it so it can be plotted.
-    # It takes data in in a binary format and converts it to integers spaced every 2 x_vals
     formatted_data = np.frombuffer(mic_in_data, dtype= np.int16)
 
     # Updates the y values of our graph with the newly formatted data.
     # Draws the graph to the screen.
     line.set_ydata(formatted_data)
-    fig.canvas.draw()
-    fig.canvas.flush_events()
+
+    y_fft = fft(formatted_data)
+    line_fft.set_ydata(np.abs(y_fft[0:SAMPLES_PER_FRAME]) * 2 / (2000 * SAMPLES_PER_FRAME))
+
+    try:
+        fig.canvas.draw()
+        fig.canvas.flush_events()
+        frame_count += 1
+    except TclError:
+        frame_rate = frame_count / (time.time() - start_time)
+        print("average frame rate = {:.0f} FPS".format(frame_rate))
+        break
 
 
 # Ends the stream.
