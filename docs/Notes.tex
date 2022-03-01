@@ -56,18 +56,38 @@
     \label{fig:sound wave 1}
 \end{figure}
 
-In carrying sound, air acts much like rippling water. When something large like a rock hits the water, a multitude of large and small waves emanate from where it hit the water. Sound, likewise, consists of a multitude of waves in combination. For sounds particular to music, the largest wave present is referred to as the \textbf{fundamental} or \textbf{first partial}. Smaller waves, decreasing in size from the fundamental wave, are know as the \textbf{second, third, fourth, etc. partial}. These partials above the fundamental add to the depth of the sound and make it more enjoyable to listen to. This quality is referred to as the \textbf{timbre} or \textbf{tone quality} of the sound. Instruments and voices vary in tone quality because their various structures emphasize different partials \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}.
+Different notes are determined by specific frequencies. The lower sounding a note is, the lower the frequency the sound wave. Similarly with high-pitched sounds, their frequencies are much higher. Western music has a structured system of notes where set frequencies are labeled with letters (A, B, C, D, E, F, G). The process of determining the frequency value of each note is called \textbf{tuning}.Western music takes the note $A4=440$Hz as a reference and uses ratios away from A4 to determine the other frequencies. For example, the note $A4$ has a ratio of $1:1$ with itself, which is $440$Hz. Going an octave up, the ratio becomes $2:1$ and so $A5=880$Hz.
+% show a picture of these two notes on a staff.
+The notes $B4, C5, D5, E5, F5, and G5$ lie between $A4$ and $A5$ and are determined by similar ratios. 
+% Insert diagram of pitch ratios.
+See \cite{tuningSystems},  for more information on tuning.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.7\textwidth]{FluteClarinetFrequencySpectrum}
-    \caption{Graphs of a flute and clarinet playing the same note. The lines represent the amplitude and frequency of sine waves that would create each sound. Each sound is composed of a fundamental (f0) and partials at multiples of the fundamental frequency, highlighted by the arrows in the graph. Note that there are differences in the relative amplitude of different harmonics for flute versus clarinet. This contributes to the timbre, or quality, of the sound and differentiates the sounds of a flute and a clarinet playing the same note. \cite{Lotto2011Psychology}.}
-    \label{fig:frequency graphs}
-\end{figure}
+%%%  Now Explain exactly everything in this video: https://www.youtube.com/watch?v=XPbLYD9KFAo
+%%% Ensure the graphs are done correctly, especially ensure the units are accurate. Also understand which time stamp the frequency graph is taken from. https://www.youtube.com/watch?v=RHmTgapLu4s
+
+%%% References^^^^: Music theory book, Two tuning websites (https://www.earmaster.com/music-theory-online/ch06/chapter-6-2.html), and frequencies of notes.
+
+%%% Ensure that you explore the connections between fourier harmonics and frequencies. See if you can explore this in python with scipy and stuff.
+
+
+
+
+
+% In carrying sound, air acts much like rippling water. When something large like a rock hits the water, a multitude of large and small waves emanate from where it hit the water. Sound, likewise, consists of a multitude of waves in combination. For sounds particular to music, the largest wave present is referred to as the \textbf{fundamental} or \textbf{first partial}. Smaller waves, decreasing in size from the fundamental wave, are know as the \textbf{second, third, fourth, etc. partial}. These partials above the fundamental add to the depth of the sound and make it more enjoyable to listen to. This quality is referred to as the \textbf{timbre} or \textbf{tone quality} of the sound. Instruments and voices vary in tone quality because their various structures emphasize different partials \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}.
+%
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=0.7\textwidth]{FluteClarinetFrequencySpectrum}
+%    \caption{Graphs of a flute and clarinet playing the same note. The lines represent the amplitude and frequency of sine waves that would create each sound. Each sound is composed of a fundamental (f0) and partials at multiples of the fundamental frequency, highlighted by the arrows in the graph. Note that there are differences in the relative amplitude of different harmonics for flute versus clarinet. This contributes to the timbre, or quality, of the sound and differentiates the sounds of a flute and a clarinet playing the same note. \cite{Lotto2011Psychology}.}
+%    \label{fig:frequency graphs}
+%\end{figure}
+
 
 
 %-------------------------MATH-----------------------------------------------------------------
 \subsection{Mathematical Preliminaries}
+
+%%%% Write a little introduction to the Math stuff.
 
 
 %-------------------------PERIODIC FUNCTIONS------------------------------------------------------
@@ -75,34 +95,12 @@ In carrying sound, air acts much like rippling water. When something large like 
 \hspace{\parindent} A \textbf{periodic function} is any function for which $f(t) = f(t + T) \: \text{for all} \: t$.
 The smallest constant $T$ which satisfies it is called the \textbf{period} of the function (it 'repeats' every $T$) \cite{hsu1970fourier}.
 
+%%%% Talk about your analysis in python and combining notes to try and make a beautiful sound. Emphasize the sine waves.
 
-
-
-
+%%%% Figure out where to go from here.
 
 
 \vspace{7cm}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
