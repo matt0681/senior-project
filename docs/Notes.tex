@@ -16,6 +16,7 @@
 \usepackage{titling}
 \usepackage{graphicx}
 \usepackage{marvosym}
+\usepackage{multirow}
 \usepackage{float}
 
 \graphicspath{{./Images/}}
@@ -47,7 +48,7 @@
 %-------------------------MUSIC---------------------------------------------------------
 \subsection{Musical Preliminaries}
 \subsubsection{Sound}
-\hspace{\parindent}Although \textbf{sound} is a aural concept, for this paper we will define it as a series of oscillating low and high air pressures. A \textbf{cycle}, or \textbf{vibration}, is one high-pressure and one low-pressure area together. The \textbf{frequency} or \textbf{pitch} is the number of cycles per second, measured in \textbf{Hz} \cite{hertzDefinition}. The higher the frequency of the sound, the higher the pitch of the sound heard. The \textbf{volume}, \textquotedblleft\textbf{loudness}", or \textbf{amplitude} of a sound is defined by the difference in air pressure between a low area and high area of a cycle. An quiet sound can be described as a transition between two densities of similar value. Likewise, a loud sound is a transition between a very high density to a very low density \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}. These terms oscillating, cycles, frequencies, etc. are all terms used when dealing with certain functions in mathematics. A diagram of this relation is shown in figure \ref{fig:sound wave 1}. The elementary \textbf{sine} function graphs the air density over time. As the density grows, the sine wave likewise increases.
+\hspace{\parindent}Although \textbf{sound} is a aural concept, for this paper we will define it as a series of oscillating low and high air pressures. A \textbf{cycle}, or \textbf{vibration}, is one high-pressure and one low-pressure area together. The \textbf{frequency} or \textbf{pitch} is the number of cycles per second, measured in \textbf{Hz} \cite{hertzDefinition}. The higher the frequency of the sound, the higher the pitch of the sound heard. The \textbf{volume}, \textquotedblleft\textbf{loudness}", or \textbf{amplitude} of a sound is defined by the difference in air pressure between a low area and high area of a cycle. A quiet sound can be described as a transition between two densities of similar value. Likewise, a loud sound is a transition between a very high density and a very low density \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}. These terms oscillating, cycles, frequencies, etc. are all terms used when dealing with certain functions in mathematics. A diagram of this relation is shown in figure \ref{fig:sound wave 1}. The elementary \textbf{sine} function graphs the air density over time. As the density grows, the sine wave likewise increases.
 
 \begin{figure}[h]
     \centering
@@ -56,32 +57,54 @@
     \label{fig:sound wave 1}
 \end{figure}
 
-Different notes are determined by specific frequencies. The lower sounding a note is, the lower the frequency the sound wave. Similarly with high-pitched sounds, their frequencies are much higher. Western music has a structured system of notes where set frequencies are labeled with letters (A, B, C, D, E, F, G). The process of determining the frequency value of each note is called \textbf{tuning}.Western music takes the note $A4=440$Hz as a reference and uses ratios away from A4 to determine the other frequencies. For example, the note $A4$ has a ratio of $1:1$ with itself, which is $440$Hz. Going an octave up, the ratio becomes $2:1$ and so $A5=880$Hz.
+Different notes are determined by specific frequencies. The lower sounding a note is, the lower the frequency the sound wave. Similarly with high-pitched sounds, their frequencies are much higher. The most common system in western music for determining the frequency values of musical notes is a 12-tone system of ratios called \textbf{equal temperament}. Given a reference note with frequency $x$, there are 11 notes between $x$ and $2x$. Each of these notes are separated by a ratio equal to the 12th root of 2, ($\sqrt[12]{2}\approx1.05946$). See figure ?? for a 12-tone scale using equal temperament.
+
+\begin{figure}[h]
+	\centering
+     \includegraphics[width=1\textwidth]{MusicalScale}
+     \vspace{2mm}
+     \begin{tabular}{ |p{2cm}||p{3cm}|p{3cm}|p{3cm}|  }
+		\hline
+		\multicolumn{4}{|c|}{12-Tone Equal Temperament} \\
+ 		\hline
+ 		Note& ISO ALPHA 2 Code &ISO ALPHA 3 Code&ISO numeric Code\\
+ 		\hline
+ 		A   & AF    &AFG&   004\\
+ 		&   AX  & ALA   &248\\
+ 		B &AL & ALB&  008\\
+ 		C    &DZ & DZA&  012\\
+ 		&   AS  & ASM&016\\
+ 		Andorra& AD  & AND   &020\\
+ 		Angola& AO  & AGO&024\\
+ 		\hline
+	\end{tabular}
+     \caption{The high and low air pressures of sound can be represented by a wave function \cite{nave2017hyperphysics}.} 
+     \label{fig:equivalent temperament}
+\end{figure}
+
+\vspace{1cm}
+
+The process of determining the frequency value of each note is known as \textbf{tuning}. Western music commonly takes the note $A4=440$Hz as a reference value and then takes ratios from A4 to determine the other frequencies. For example, the note $A4$ has a ratio of $1:1$ with itself, which is $440$Hz. Going to the next whole note, $B5$, the ratio becomes $2:1$ and so $A5=880$Hz.
 % show a picture of these two notes on a staff.
 The notes $B4, C5, D5, E5, F5, and G5$ lie between $A4$ and $A5$ and are determined by similar ratios. 
 % Insert diagram of pitch ratios.
 See \cite{tuningSystems},  for more information on tuning.
 
+
+
+
+
 %%%  Now Explain exactly everything in this video: https://www.youtube.com/watch?v=XPbLYD9KFAo
 %%% Ensure the graphs are done correctly, especially ensure the units are accurate. Also understand which time stamp the frequency graph is taken from. https://www.youtube.com/watch?v=RHmTgapLu4s
 
-%%% References^^^^: Music theory book, Two tuning websites (https://www.earmaster.com/music-theory-online/ch06/chapter-6-2.html), and frequencies of notes.
+%%% References^^^^: 
+% - Music theory book
+% - Two tuning websites (https://www.earmaster.com/music-theory-online/ch06/chapter-6-2.html)
+% - frequencies of notes
+% - https://en.wikipedia.org/wiki/Equal_temperament
+% - 
 
-%%% Ensure that you explore the connections between fourier harmonics and frequencies. See if you can explore this in python with scipy and stuff.
-
-
-
-
-
-% In carrying sound, air acts much like rippling water. When something large like a rock hits the water, a multitude of large and small waves emanate from where it hit the water. Sound, likewise, consists of a multitude of waves in combination. For sounds particular to music, the largest wave present is referred to as the \textbf{fundamental} or \textbf{first partial}. Smaller waves, decreasing in size from the fundamental wave, are know as the \textbf{second, third, fourth, etc. partial}. These partials above the fundamental add to the depth of the sound and make it more enjoyable to listen to. This quality is referred to as the \textbf{timbre} or \textbf{tone quality} of the sound. Instruments and voices vary in tone quality because their various structures emphasize different partials \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}.
-%
-%\begin{figure}[h]
-%    \centering
-%    \includegraphics[width=0.7\textwidth]{FluteClarinetFrequencySpectrum}
-%    \caption{Graphs of a flute and clarinet playing the same note. The lines represent the amplitude and frequency of sine waves that would create each sound. Each sound is composed of a fundamental (f0) and partials at multiples of the fundamental frequency, highlighted by the arrows in the graph. Note that there are differences in the relative amplitude of different harmonics for flute versus clarinet. This contributes to the timbre, or quality, of the sound and differentiates the sounds of a flute and a clarinet playing the same note. \cite{Lotto2011Psychology}.}
-%    \label{fig:frequency graphs}
-%\end{figure}
-
+%%% Ensure that you explore the connections between fourier harmonics and frequencies. See if you can explore this in python with scipy and stuff. You will have to do this after diving into the mathematics.
 
 
 %-------------------------MATH-----------------------------------------------------------------
@@ -100,15 +123,31 @@ The smallest constant $T$ which satisfies it is called the \textbf{period} of th
 %%%% Figure out where to go from here.
 
 
-\vspace{7cm}
-
-
 
 
 
 %-------------------------TIME & FREQUENCY----------------------------------------------------
 \subsubsection{Time and Frequency Domains}
 \hspace{\parindent} Remembering the sine wave function from figure \ref{fig:sound wave 1}, we will refer to it with $f(t)$. We see that $t$ is time and the value $f(t)$ represents the motion of the low and high-pressure areas. This function $f(t)$ is called the \textbf{time domain representation} because it shows how the sound behaves over time (the x-axis is time and the y-axis is amplitude). Now looking at the graphs in figure \ref{fig:frequency graphs}, we see that the y-axis is also amplitude but the x-axis here is frequency. The functions that create these graphs (which we can arbitrarily call $f(x)$ and $g(x)$) are called \textbf{frequency domain representations} \cite{morrison1994fourier}. As we will see later in this paper, the two domains are closely connected and important through the paper.
+
+
+% In carrying sound, air acts much like rippling water. When something large like a rock hits the water, a multitude of large and small waves emanate from where it hit the water. Sound, likewise, consists of a multitude of waves in combination. For sounds particular to music, the largest wave present is referred to as the \textbf{fundamental} or \textbf{first partial}. Smaller waves, decreasing in size from the fundamental wave, are know as the \textbf{second, third, fourth, etc. partial}. These partials above the fundamental add to the depth of the sound and make it more enjoyable to listen to. This quality is referred to as the \textbf{timbre} or \textbf{tone quality} of the sound. Instruments and voices vary in tone quality because their various structures emphasize different partials \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}.
+%
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=0.7\textwidth]{FluteClarinetFrequencySpectrum}
+%    \caption{Graphs of a flute and clarinet playing the same note. The lines represent the amplitude and frequency of sine waves that would create each sound. Each sound is composed of a fundamental (f0) and partials at multiples of the fundamental frequency, highlighted by the arrows in the graph. Note that there are differences in the relative amplitude of different harmonics for flute versus clarinet. This contributes to the timbre, or quality, of the sound and differentiates the sounds of a flute and a clarinet playing the same note. \cite{Lotto2011Psychology}.}
+%    \label{fig:frequency graphs}
+%\end{figure}
+
+
+
+\vspace{7cm}
+
+
+
+
+
 
 %-------------------------ORTHOGONALITY------------------------------------------------------
 \subsubsection{Orthogonality of Vectors and Functions}
