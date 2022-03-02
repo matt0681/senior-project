@@ -57,52 +57,47 @@
     \label{fig:sound wave 1}
 \end{figure}
 
-Different notes are determined by specific frequencies. The lower sounding a note is, the lower the frequency the sound wave. Similarly with high-pitched sounds, their frequencies are much higher. The most common system in western music for determining the frequency values of musical notes is a 12-tone system of ratios called \textbf{equal temperament}. Given a reference note with frequency $x$, there are 11 notes between $x$ and $2x$. Each of these notes are separated by a ratio equal to the 12th root of 2, ($\sqrt[12]{2}\approx1.05946$). See figure ?? for a 12-tone scale using equal temperament.
+Different notes are determined by specific frequencies. The lower sounding a note is, the lower the frequency of the sound wave. Similarly with high-pitched sounds, their frequencies are much higher. The most common system in western music for determining the frequency values of musical notes is a 12-tone system of ratios called \textbf{equal temperament}. Given a reference note with frequency $x$, there are 11 notes between $x$ and $2x$. Each of these notes are separated by a ratio equal to the 12th root of 2, ($\sqrt[12]{2}\approx1.05946$). See figure \ref{fig:equal temperament} for a 12-tone scale using equal temperament  \cite{tuningSystems} \cite{boatwright1956musictheory}.
 
 \begin{figure}[h]
 	\centering
      \includegraphics[width=1\textwidth]{MusicalScale}
      \vspace{2mm}
-     \begin{tabular}{ |p{2cm}||p{3cm}|p{3cm}|p{3cm}|  }
+     \begin{tabular}{ |p{1.5cm}|p{3cm}|p{2cm}|  }
 		\hline
-		\multicolumn{4}{|c|}{12-Tone Equal Temperament} \\
+		\multicolumn{3}{|c|}{12-Tone Equal Temperament} \\
  		\hline
- 		Note& ISO ALPHA 2 Code &ISO ALPHA 3 Code&ISO numeric Code\\
+ 		Note & Interval & Ratio \\
  		\hline
- 		A   & AF    &AFG&   004\\
- 		&   AX  & ALA   &248\\
- 		B &AL & ALB&  008\\
- 		C    &DZ & DZA&  012\\
- 		&   AS  & ASM&016\\
- 		Andorra& AD  & AND   &020\\
- 		Angola& AO  & AGO&024\\
+ 		A & Unison & 1 : 1 \\
+ 		$\sharp$A / $\flat$B & Minor Second & 1 : 1.05946 \\
+ 		B & Major Second & 1 : 1.12246 \\
+ 		C & Minor Third & 1 : 1.18921 \\
+ 		$\sharp$C / $\flat$D & Major Third & 1 : 1.25992 \\
+ 		D & Fourth & 1 : 1.33483 \\
+ 		$\sharp$D / $\flat$E & Diminished Fifth & 1 : 1.41421 \\
+ 		E & Fifth & 1 : 1.49831 \\
+ 		F & Minor Sixth & 1 : 1.58740 \\
+ 		$\sharp$F / $\flat$G & Major Sixth & 1 : 1.68179 \\
+ 		G & Minor Seventh & 1 : 1.78180 \\
+ 		$\sharp$G / $\flat$A & Major Seventh & 1 : 1.88775 \\
+ 		A & Octave & 1 : 2 \\
  		\hline
 	\end{tabular}
-     \caption{The high and low air pressures of sound can be represented by a wave function \cite{nave2017hyperphysics}.} 
-     \label{fig:equivalent temperament}
+     \caption{The following shows the 12 divisions within the equal temperament system. Each ratio is a  \cite{boatwright1956musictheory} \cite{intervalChart}. Although considered the same here, the paired accented notes ($\sharp$A / $\flat$B, etc.) are actually not the same. See \cite{tuningSystems} for more information on this beyond the scope of this paper.} 
+     \label{fig:equal temperament}
 \end{figure}
 
-\vspace{1cm}
-
-The process of determining the frequency value of each note is known as \textbf{tuning}. Western music commonly takes the note $A4=440$Hz as a reference value and then takes ratios from A4 to determine the other frequencies. For example, the note $A4$ has a ratio of $1:1$ with itself, which is $440$Hz. Going to the next whole note, $B5$, the ratio becomes $2:1$ and so $A5=880$Hz.
-% show a picture of these two notes on a staff.
-The notes $B4, C5, D5, E5, F5, and G5$ lie between $A4$ and $A5$ and are determined by similar ratios. 
-% Insert diagram of pitch ratios.
-See \cite{tuningSystems},  for more information on tuning.
-
-
-
-
+Today the A notated ``Unison'', also referred to as A4, is commonly set to 440Hz and is used as a reference point for calculating the other frequencies. This standard has changed throughout history and has its origins in medieval Europe. See \cite{a440why} for further reading. 
 
 %%%  Now Explain exactly everything in this video: https://www.youtube.com/watch?v=XPbLYD9KFAo
 %%% Ensure the graphs are done correctly, especially ensure the units are accurate. Also understand which time stamp the frequency graph is taken from. https://www.youtube.com/watch?v=RHmTgapLu4s
 
-%%% References^^^^: 
-% - Music theory book
-% - Two tuning websites (https://www.earmaster.com/music-theory-online/ch06/chapter-6-2.html)
-% - frequencies of notes
-% - https://en.wikipedia.org/wiki/Equal_temperament
-% - 
+
+
+
+
+
 
 %%% Ensure that you explore the connections between fourier harmonics and frequencies. See if you can explore this in python with scipy and stuff. You will have to do this after diving into the mathematics.
 
