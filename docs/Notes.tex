@@ -16,6 +16,7 @@
 \usepackage{titling}
 \usepackage{graphicx}
 \usepackage{marvosym}
+\usepackage{multirow}
 \usepackage{float}
 
 \graphicspath{{./Images/}}
@@ -39,15 +40,12 @@
 
 %------------------------INTRODUCTION--------------------------------------------
 \section{Introduction}
-\hspace{\parindent} The goal of this paper is to explore the application of Fourier analysis in signal processing and specifically the analysis of music. The mathematical background of music and Fourier analysis will be covered as well as the Fast Fourier Transform (FFT) algorithm and applications of the FFT on musical signals. Along with the mathematics, explorations will be done through computer algorithms.
-
-%----------------------PRELIMINARIES-------------------------------------
-\section{Musical and Mathematical Preliminaries}
+\hspace{\parindent} [[[The goal of this paper is to explore the application of Fourier analysis in signal processing and specifically the analysis of music. The mathematical background of music and Fourier analysis will be covered as well as the Fast Fourier Transform (FFT) algorithm and applications of the FFT on musical signals. Along with the mathematics, explorations will be done through computer algorithms.]]]
 
 %-------------------------MUSIC---------------------------------------------------------
-\subsection{Musical Preliminaries}
-\subsubsection{Sound}
-\hspace{\parindent}Although \textbf{sound} is a aural concept, for this paper we will define it as a series of oscillating low and high air pressures. A \textbf{cycle}, or \textbf{vibration}, is one high-pressure and one low-pressure area together. The \textbf{frequency} or \textbf{pitch} is the number of cycles per second, measured in \textbf{Hz} \cite{hertzDefinition}. The higher the frequency of the sound, the higher the pitch of the sound heard. The \textbf{volume}, \textquotedblleft\textbf{loudness}", or \textbf{amplitude} of a sound is defined by the difference in air pressure between a low area and high area of a cycle. An quiet sound can be described as a transition between two densities of similar value. Likewise, a loud sound is a transition between a very high density to a very low density \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}. These terms oscillating, cycles, frequencies, etc. are all terms used when dealing with certain functions in mathematics. A diagram of this relation is shown in figure \ref{fig:sound wave 1}. The elementary \textbf{sine} function graphs the air density over time. As the density grows, the sine wave likewise increases.
+\section{Musical Preliminaries}
+\subsection{Sound}
+\hspace{\parindent} In physics, \textbf{sound} is a series of oscillating low and high air pressures. The oscillations are created when a material vibrates. A \textbf{cycle}, or \textbf{vibration}, is one high-pressure and one low-pressure area together. The \textbf{frequency} or \textbf{pitch} is the number of cycles per second, measured in \textbf{Hz} \cite{hertzDefinition}. The higher the frequency of the sound, the higher the pitch of the sound heard. The \textbf{volume}, \textquotedblleft\textbf{loudness}", or \textbf{amplitude} of a sound is defined by the difference in air pressure between a low area and high area of a cycle. A quiet sound can be described as a transition between two densities of similar value. Likewise, a loud sound is a transition between a very high density and a very low density \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}. These terms oscillating, cycles, frequencies, etc. are all terms used when dealing with certain functions in mathematics. A diagram of this relation is shown in figure \ref{fig:sound wave 1}. The elementary \textbf{sine} function graphs the air density over time. As the density increases, the sine wave increases.
 
 \begin{figure}[h]
     \centering
@@ -56,61 +54,106 @@
     \label{fig:sound wave 1}
 \end{figure}
 
-In carrying sound, air acts much like rippling water. When something large like a rock hits the water, a multitude of large and small waves emanate from where it hit the water. Sound, likewise, consists of a multitude of waves in combination. For sounds particular to music, the largest wave present is referred to as the \textbf{fundamental} or \textbf{first partial}. Smaller waves, decreasing in size from the fundamental wave, are know as the \textbf{second, third, fourth, etc. partial}. These partials above the fundamental add to the depth of the sound and make it more enjoyable to listen to. This quality is referred to as the \textbf{timbre} or \textbf{tone quality} of the sound. Instruments and voices vary in tone quality because their various structures emphasize different partials \cite{boatwright1956musictheory} \cite{lenssen2014fouriermusic}.
+\subsection{Music Theory}
+\hspace{\parindent}Different notes are determined by specific frequencies. The lower sounding a note is, the lower the frequency of the sound wave. Similarly with high-pitched sounds, their frequencies are much higher. The most common system in western music for determining the frequency values of musical notes is a 12-tone system of ratios called \textbf{equal temperament}. Given a reference note with frequency $x$, there are 11 notes between $x$ and $2x$. Each of these notes are separated by a ratio equal to the 12th root of 2, ($\sqrt[12]{2}\approx1.05946$). See figure \ref{fig:equal temperament} for a 12-tone scale using equal temperament  \cite{tuningSystems} \cite{boatwright1956musictheory}.
+
+%%% Add frequencies starting at 440 Hz to this graph.
 
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.7\textwidth]{FluteClarinetFrequencySpectrum}
-    \caption{Graphs of a flute and clarinet playing the same note. The lines represent the amplitude and frequency of sine waves that would create each sound. Each sound is composed of a fundamental (f0) and partials at multiples of the fundamental frequency, highlighted by the arrows in the graph. Note that there are differences in the relative amplitude of different harmonics for flute versus clarinet. This contributes to the timbre, or quality, of the sound and differentiates the sounds of a flute and a clarinet playing the same note. \cite{Lotto2011Psychology}.}
-    \label{fig:frequency graphs}
+	\centering
+     \includegraphics[width=1\textwidth]{MusicalScale}
+     \vspace{2mm}
+     \begin{tabular}{ |p{1.5cm}|p{3cm}|p{2cm}|p{2.2cm}|  }
+		\hline
+		\multicolumn{4}{|c|}{12-Tone Equal Temperament} \\
+ 		\hline
+ 		Note & Interval & Ratio & Frequency(Hz) \\
+ 		\hline
+ 		A & Unison & 1 : 1 & 440.00\\
+ 		$\sharp$A / $\flat$B & Minor Second & 1 : 1.05946 & 466.16 \\
+ 		B & Major Second & 1 : 1.12246 & 493.88 \\
+ 		C & Minor Third & 1 : 1.18921 & 523.25 \\
+ 		$\sharp$C / $\flat$D & Major Third & 1 : 1.25992 & 554.37 \\
+ 		D & Fourth & 1 : 1.33483 & 587.33 \\
+ 		$\sharp$D / $\flat$E & Diminished Fifth & 1 : 1.41421 & 622.25 \\
+ 		E & Fifth & 1 : 1.49831 & 659.25 \\
+ 		F & Minor Sixth & 1 : 1.58740 & 698.46 \\
+ 		$\sharp$F / $\flat$G & Major Sixth & 1 : 1.68179 & 739.99 \\
+ 		G & Minor Seventh & 1 : 1.78180 & 783.99 \\
+ 		$\sharp$G / $\flat$A & Major Seventh & 1 : 1.88775 & 830.61 \\
+ 		A & Octave & 1 : 2 & 880.00 \\
+ 		\hline
+	\end{tabular}
+     \caption{The following shows the 12 divisions within the equal temperament system. Each ratio is a $\sqrt[12]{2}\approx1.05946$ apart \cite{boatwright1956musictheory} \cite{intervalChart} \cite{noteFrequencies}. Although considered the same in the equal temperament system, the paired accented notes ($\sharp$A / $\flat$B, etc.) are actually not the same. See \cite{tuningSystems} for more information on this beyond the scope of this paper.} 
+     \label{fig:equal temperament}
 \end{figure}
 
+Today the note ``A'', denoted ``Unison'' or A4, is commonly set to 440Hz and is used as a reference point for calculating the other frequencies. This standard has changed throughout history and has its origins in medieval Europe. See \cite{a440why} for further reading.
 
-%-------------------------MATH-----------------------------------------------------------------
+When a note is played by a computer, the frequency is perfectly calculated and a very artificial sound is heard. With instruments and the human voice however, perfect frequencies are not generated and there are qualities which cause notes to sound unique and beautiful. For example, when a clarinet and a trumpet both play A4, even though they play the same frequency, they sound very different. This is due to differences in air flow and materials, wood vs. metal, lip buzzing vs. reed vibrations, etc. Analyzing the frequencies of computer generated notes and instrument generated notes reveals something amazing behind the physics of musical sound.
+
+\begin{figure}[H]
+    \centering
+    \parbox{3in}{\includegraphics[width=0.36\textwidth]{OboeA4Freq.jpg}}
+    \begin{minipage}{3in}
+        \includegraphics[width=0.8\textwidth]{CompA4Freq.jpg}
+    \end{minipage}
+    \caption{The graph on the left shows the frequency analysis of an oboe playing an A4. The right graph shows a computer playing the same note.}%
+    \label{fig:computer vs. oboe}%
+\end{figure}
+
+Figure \ref{fig:computer vs. oboe} shows the frequency analysis of a computer generated A4 and an A4 played by a oboe. As you can see on the computer graph, the large spike is centered around 440 Hz, which matches the table in figure \ref{fig:equal temperament} for the note A4. Notice how the oboe graph contains multiple other spikes decreasing in size from the largest spike at 440 Hz. This phenomena is known as the \textbf{overtone} or \textbf{harmonic} series and consists of regular intervals from the \textbf{fundamental}, or largest, frequency. These successive spikes are created by properties of the instrument used such as material, size, air column, etc., meaning every note played is slightly unique. Because a computer will always generate the exact same frequency, its notes are never unique. This is one reason for the unique beauty in singing and instrumental music.
+
+% Remember to include the citation for the paragraphs around here and this image vvvv
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{FluteClarinetFrequencySpectrum.jpg}
+    \caption{Graphs of a clarinet and a flute both playing the note A4 \cite{}.} 
+    \label{fig:clarinet vs. flute}
+\end{figure}
+
+Figure \ref{fig:clarinet vs. flute} shows the frequency analysis of a clarinet and flute both playing the note A4. Notice how although both are playing the same note, the differences in spikes leads to the different sound between the two instruments. The frequencies within the harmonic series are determined by whole number ratios. No matter what the fundamental frequency is, the harmonic series will always follow the ratios; 1:1, 1:2, 1:3, 1:4, ..., 1:n for $n$ harmonics in the series.
+
+
+%-------------------------TIME & FREQUENCY----------------------------------------------------
+\subsection{Time and Frequency Domains}
+\hspace{\parindent} There are two common ways of graphing sound. It can be graphed as amplitude over time, which shows the volume of the sound, or as amplitude over frequency, which shows the frequency of the sound. Mathematically, these are referred to as the \textbf{time domain representation} and \textbf{frequency domain representation}. The time domain shows how the sound physically behaves over time (the x-axis is time and the y-axis is amplitude). The frequency domain shows the frequencies of the sound (the x-axis is frequency and the y-axis is the amplitude, or strength of the frequencies). Time domain data can be generated through a microphone as it is a literal representation of the sound waves. The frequency domain data is much more complicated and requires a bit of math to extract from the time domain data. The rest of this paper will focus on understanding this process of moving from the time domain to the frequency domain.
+
+
+
+%----------------------------------MATH-----------------------------------------------------------------
 \subsection{Mathematical Preliminaries}
-
+The following sections will serve both as an introduction to the mathematics of music as well as an exploration of various concepts through computer programs. Additionally, the process of moving between the time and frequency domains will be described and explored.
 
 %-------------------------PERIODIC FUNCTIONS------------------------------------------------------
 \subsubsection{Periodic Functions}
 \hspace{\parindent} A \textbf{periodic function} is any function for which $f(t) = f(t + T) \: \text{for all} \: t$.
-The smallest constant $T$ which satisfies it is called the \textbf{period} of the function (it 'repeats' every $T$) \cite{hsu1970fourier}.
+The smallest constant $T$ which satisfies it is called the \textbf{period} of the function (it 'repeats' every $T$) \cite{hsu1970fourier}. The sine wave that represented the sound in figure \ref{fig:sound wave 1} is an example of a periodic function where $f(t)=A$sin$(\omega t+\varphi)$. Here $A$ is the amplitude, or the maximum deviation of the function from zero. $\omega=2\pi f$ where $f$ is the frequency, also denoted $\frac{1}{T}$, multiplied by $2\pi$ to convert it to an angular frequency (a measure of radians per second instead of cycles per second). Lastly, $\varphi$ specifies the phase of the wave (a measure, in radians, of where the oscillation is in within its cycle at $t=0$) \cite{sineWiki} \cite{angularFrequency}.
 
+Showing an example of a sine function that generates a musical note is figure \ref{fig:sine python}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{440Apython.jpg}
+    \caption{The note A4 created using the sine function: $f(t)=A$sin$(\omega t+\varphi)$, where $A = 4$, $\omega = 2\pi440$, and $\varphi = 0$.} 
+    \label{fig:sine python}
+\end{figure}
 
+By changing the amplitude $A = 20$ and making the x-axis go from 0 to 10000, the sine function can be calculated and stored into a wav file. This file can then be played on a computer and the note A4 will actually be heard. By adding successive sine functions to the original, a more natural sounding A4 can be generated. These added sine functions represent the additional harmonics.
 
+ \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{A4with4harmonics.jpg}
+    \caption{The note A4 created using the sine functions: $f(t)=4$sin$(2\pi440t+\varphi) + 3.95$sin$(2\pi880t+\varphi) + 3.9$sin$(2\pi1320t+\varphi) + 3.85$sin$(2\pi1760+\varphi)$ .} 
+    \label{fig:sine python 2}
+\end{figure}
 
+Notice in \ref{fig:sine python 2} that the amplitudes (4, 3.95, 3.9, 3.85) decrease and the frequencies (440, 880, 1320, 1760) increase by the before mentioned ratios (1:1, 1:2, 1:3, 1:4).
 
+Moving now away from the music side, we will dive into the Fourier analysis, which will allow us to move from the time domain into the frequency domain and vice versa. This exploration begins with Orthogonality.
 
-\vspace{7cm}
+%%%% Ensure the graphs are done correctly, especially ensure the units are accurate. Also understand which time stamp the frequency graph is taken from. https://www.youtube.com/watch?v=RHmTgapLu4s
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%-------------------------TIME & FREQUENCY----------------------------------------------------
-\subsubsection{Time and Frequency Domains}
-\hspace{\parindent} Remembering the sine wave function from figure \ref{fig:sound wave 1}, we will refer to it with $f(t)$. We see that $t$ is time and the value $f(t)$ represents the motion of the low and high-pressure areas. This function $f(t)$ is called the \textbf{time domain representation} because it shows how the sound behaves over time (the x-axis is time and the y-axis is amplitude). Now looking at the graphs in figure \ref{fig:frequency graphs}, we see that the y-axis is also amplitude but the x-axis here is frequency. The functions that create these graphs (which we can arbitrarily call $f(x)$ and $g(x)$) are called \textbf{frequency domain representations} \cite{morrison1994fourier}. As we will see later in this paper, the two domains are closely connected and important through the paper.
 
 %-------------------------ORTHOGONALITY------------------------------------------------------
 \subsubsection{Orthogonality of Vectors and Functions}
@@ -369,14 +412,13 @@ Theorem?:
 \end{equation}
 
 %---------------------------DIRAC DELTA FUNC-----------------------------------------------
-\subsection{Dirac Delta Function}
+%\subsection{Dirac Delta Function}
 
-\[ \delta(t) = \begin{cases} \infty & \text{if} \:\: t = 0 \\ 0 & \text{if} \:\: t \neq 0 \end{cases}\]
+\noindent(more to be added)
 
-\vspace{7cm}
+%\[ \delta(t) = \begin{cases} \infty & \text{if} \:\: t = 0 \\ 0 & \text{if} \:\: t \neq 0 \end{cases}\]
 
-
-
+\vspace{2cm}
 
 
 
