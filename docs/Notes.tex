@@ -40,7 +40,7 @@
 
 %------------------------INTRODUCTION--------------------------------------------
 \section{Introduction}
-\hspace{\parindent} [[[The goal of this paper is to explore the application of Fourier analysis in signal processing and specifically the analysis of music. The mathematical background of music and Fourier analysis will be covered as well as the Fast Fourier Transform (FFT) algorithm and applications of the FFT on musical signals. Along with the mathematics, explorations will be done through computer algorithms.]]]
+%\hspace{\parindent} [[[The goal of this paper is to explore the application of Fourier analysis in signal processing and specifically the analysis of music. The mathematical background of music and Fourier analysis will be covered as well as the Fast Fourier Transform (FFT) algorithm and applications of the FFT on musical signals. Along with the mathematics, explorations will be done through computer algorithms.]]]
 
 %-------------------------MUSIC---------------------------------------------------------
 \section{Musical Preliminaries}
@@ -57,7 +57,6 @@
 \subsection{Music Theory}
 \hspace{\parindent}Different notes are determined by specific frequencies. The lower sounding a note is, the lower the frequency of the sound wave. Similarly with high-pitched sounds, their frequencies are much higher. The most common system in western music for determining the frequency values of musical notes is a 12-tone system of ratios called \textbf{equal temperament}. Given a reference note with frequency $x$, there are 11 notes between $x$ and $2x$. Each of these notes are separated by a ratio equal to the 12th root of 2, ($\sqrt[12]{2}\approx1.05946$). See figure \ref{fig:equal temperament} for a 12-tone scale using equal temperament  \cite{tuningSystems} \cite{boatwright1956musictheory}.
 
-%%% Add frequencies starting at 440 Hz to this graph.
 
 \begin{figure}[h]
 	\centering
@@ -214,8 +213,6 @@ The complex exponentials $e^{jn\omega_0t}$ (by adding $n$ the value is magnified
 \textbf{\underline{Theorem 2.1:} Orthogonality of the Complex Exponentials}
 
 \vspace{2mm}
-
-% There needs to be more explaining/ transition into this vvvvvv
 
 \noindent
 The complex exponentials $e^{jn\omega_0t}$ of the above set satisfy the orthogonality condition
@@ -428,28 +425,12 @@ The previous sections will serve as a basis for what the rest of the paper will 
 %------------------------METHODOLOGY, ALGORITHM, ETC.------------------------------
 \section{Methodology, Algorithm, Etc.}
 
-\hspace{\parindent} With an understanding of the Fourier transform, we can use computers to create real-world examples of music analysis. Starting in python, there are various libraries which facilitate real-time 
-
-%-----------------------TIME & FREQUENCY DOMAINS---------------------------------------
-\subsection{Time and Frequency Domain Analysis}
-
-%----------------------------TIME FROM SINE WAVE--------------------------------------
-\subsubsection{Time Domain of a Periodic Signal}
-
-\noindent(more to be added)
-
-%----------------------------FREQUENCY FROM SINE WAVE--------------------------------------
-\subsubsection{Time Domain of a Periodic Signal}
-
-\noindent(more to be added)
-
-
-% You should show an xyz graph to show the relation between time and frequency. it would be pretty cool to show the graph of that as a colorful surface.
+\noindent \hspace{\parindent} With an understanding of the Fourier transform, we can use computers to create real-world examples. Starting in python, there are various libraries which facilitate real-time Fourier analysis. The library Scipy contains multiple Fast Fourier Transform functions which allow us to analyze a computer's microphone input in real-time. Additionally, as has already been mentioned, python has support for creatign and graphing sine functions and then using those functions to create audio files.
 
 
 %---------------------------TIME IN REAL TIME-------------------------------------------
-\subsubsection{Time Domain of a Real Time Signal}
-\hspace{\parindent} In order to visualize music, the audio signal must be broken down so that various aspects of the sound can be analyzed. The most sensible first steps would be to look at the musical signal in the time and frequency domains. The time domain can be easily obtained without much math with the help of a python library. Using the library PyAudio, the microphone can be accessed and sound input can be read and manipulated. The library takes in the microphone data as samples and graphs the samples in real time. The x and y axes are time and amplitude. Figure \ref{fig:time_1} shows work done so far in real-time sound analysis. The code starts off by opening a PyAudio "stream." This object takes in microphone data and organizes it into chunks. The chunks are loaded into a buffer and the graphing library, matplotlib.pyplot, then takes the buffer and graphs it. There is also some data manipulation to get the microphone raw data into a graph-able format but details are unimportant for the scope of this paper. The Python, PyAudio, and PyPlot versions used here and throughout the rest of the paper are 3.7.7, 0.2.11, and 3.5.1 respectively \cite{hunter2007pyplot} \cite{pyaudio} \cite{python}. Figure \ref{fig:time_2} shows another such graph.
+\subsection{Time Domain of a Real Time Signal}
+\hspace{\parindent} In order to visualize music, the audio signal must be broken down so that various aspects of the sound can be analyzed. The most sensible first steps would be to look at the musical signal in the time and frequency domains. The time domain can be easily obtained without much math with the help of a python library. Using the library PyAudio, the microphone can be accessed and sound input can be read and manipulated. The library takes in the microphone data as samples and graphs the samples in real time. The x and y axes are time and amplitude. Figure \ref{fig:time_1} shows work done so far in real-time sound analysis. The code starts off by opening a PyAudio "stream." This object takes in microphone data and organizes it into chunks. The chunks are loaded into a buffer and the graphing library, matplotlib.pyplot, takes the buffer and graphs it. There is also some data manipulation to get the microphone raw data into a graph-able format but details are unimportant for the scope of this paper. The Python, PyAudio, and PyPlot versions used here and throughout the rest of the paper are 3.7.7, 0.2.11, and 3.5.1 respectively \cite{hunter2007pyplot} \cite{pyaudio} \cite{python}. Figure \ref{fig:time_2} shows another such graph.
 
 \begin{figure}[H]
     \centering
@@ -466,9 +447,15 @@ The previous sections will serve as a basis for what the rest of the paper will 
 \end{figure}
 
 %---------------------------FREQUENCY IN REAL TIME-------------------------------------
-\subsubsection{Frequency Domain of a Real Time Signal}
+\subsection{Frequency Domain of a Real Time Signal}
 \noindent\hspace{\parindent}The next step in this direction is to look at the frequency domain. Taking the same exact signals as shown in figures \ref{fig:time_1} and \ref{fig:time_2} a library called SciPy can be used to go from the time domain to the frequency domain. With the fast Fourier trasform (FFT) build into SciPy, the frequencies that make up the signals of figures \ref{fig:time_1} and \ref{fig:time_2} can be extracted. This was a bit more complicated than the previous analysis but luckily all of the mathematical intricacies are handled by SciPy.  \cite{scipy}. 
-% YOU NEED TO DESCRIBE EXACTLY HOW SCIPY DOES IT (ONLY WITH REGARDS TO THE PRELIMINARIES DESCRIBED ABOVE)------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+% YOU NEED TO DESCRIBE EXACTLY HOW SCIPY DOES IT (ONLY WITH REGARDS TO THE PRELIMINARIES DESCRIBED ABOVE)
+
+
+
+
 Figures \ref{fig:frequency_1} and \ref{fig:frequency_2} show the same note and harmony done by the author but instead of plotting the time on the x-axis, the frequency is plotted instead. This is how the author approximated what note was being sung.
 
 \begin{figure}[H]
@@ -485,15 +472,18 @@ Figures \ref{fig:frequency_1} and \ref{fig:frequency_2} show the same note and h
     \label{fig:frequency_2}
 \end{figure}
 
-\noindent(more to be added)
+
+% HERE CONNECT WHAT YOU JUST DID BACK TO THE HARMONICS AND MAYBE ADD SPECTROGRAMS TOO.
+
+
 
 %---------------------EXPECTED OUTCOME-------------------------------------------
 \section{Expected Outcome}
-\noindent\hspace{\parindent}The expected outcome of this project is to develop a computer program which can take in microphone input, analyze it using Fourier analysis, and then display some form of colorful shapes which represent the musical input. I do not expect the program to be complete by the end of the semester and my main focus of developing this project is in understanding the mathematics behind Fourier analysis and how that math is used in programming, specifically python.
+%\noindent\hspace{\parindent}The expected outcome of this project is to develop a computer program which can take in microphone input, analyze it using Fourier analysis, and then display some form of colorful shapes which represent the musical input. I do not expect the program to be complete by the end of the semester and my main focus of developing this project is in understanding the mathematics behind Fourier analysis and how that math is used in programming, specifically python.
 
 %-----------------------CONCLUSION----------------------------------------------
 \section{Conclusion}
-\noindent(more to be added)
+%\noindent(more to be added)
 
 %-----------------------ACKNOWLEDGEMENTS-----------------------------------------
 \section{Acknowledgements}
