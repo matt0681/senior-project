@@ -308,6 +308,28 @@ Then replacing $m$ with $n$ we get
 
 \noindent \cite{morrison1994fourier}
 
+This formula essentially describes the inner product of $f_p(t)$ and $e^{-jn\omega_0t}$. A way to visualize this process is that the formula ``projects'' the function $f_p(t)$ onto a unit circle in the complex plane. In figure \ref{fig:projection} we see this more literally. As mentioned previously, the complex exponential provides rotational movement while the function $g(t)$, substituted for our $f_p(t)$, provides the amplitude of the vector (the green arrow).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Projection_One.jpg}
+    \caption{The projection of $g(t)$ into the complex plane. This visualization was done by Grant Sanderson on his YouTube channel 3Blue1Brown. The channel contains tons of incredible videos on mathematics topics, see \cite{3Blue1Brown} for more information.} 
+    \label{fig:projection}
+\end{figure}
+
+By integrating from $-T_0/2$ to $T_0/2$ and dividing by $T_0$, $F(n)$ is essentially the average value along the projection, or a sort of center-of-mass for the unit circle.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Projection_Two.jpg}
+    \caption{Another visualization showing how the integral calculates a ``center-of-mass'' for the function $g(t)$ \cite{3Blue1Brown}.} 
+    \label{fig:projection 2}
+\end{figure}
+
+By graphing $F(n)$, shown in figure \ref{fig:projection 3} as $\hat{g}(f)$, we have the frequency domain graph. The x axis was the previous 
+
+%https://github.com/thatSaneKid/fourier/blob/master/Fourier%20Transform%20-%20A%20Visual%20Introduction.ipynb
+
 \vspace{4mm}
 
 \noindent
