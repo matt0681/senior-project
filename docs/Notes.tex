@@ -40,6 +40,19 @@
 
 %------------------------INTRODUCTION--------------------------------------------
 \section{Introduction}
+\noindent \hspace{\parindent} This research paper discusses and explores through experimentation the frequency analysis of sound and music. First introducing  
+
+
+
+
+    The function of an abstract is to describe, not to evaluate or defend, the paper.
+
+    The abstract should begin with a brief but precise statement of the problem or issue, followed by a description of the research method and design, the major findings, and the conclusions reached.
+
+    The abstract should contain the most important key words referring to method and content: these facilitate access to the abstract by computer search and enable a reader to decide whether to read the entire dissertation.
+
+
+
 %\hspace{\parindent} [[[The goal of this paper is to explore the application of Fourier analysis in signal processing and specifically the analysis of music. The mathematical background of music and Fourier analysis will be covered as well as the Fast Fourier Transform (FFT) algorithm and applications of the FFT on musical signals. Along with the mathematics, explorations will be done through computer algorithms.]]]
 
 %-------------------------MUSIC---------------------------------------------------------
@@ -119,13 +132,12 @@ Figure \ref{fig:clarinet vs. flute} shows the frequency analysis of a clarinet a
 \hspace{\parindent} There are two common ways of graphing sound. It can be graphed as amplitude over time, which shows the volume of the sound, or as amplitude over frequency, which shows the frequency of the sound. Mathematically, these are referred to as the \textbf{time domain representation} and \textbf{frequency domain representation}. The time domain shows how the sound physically behaves over time (the x-axis is time and the y-axis is amplitude). The frequency domain shows the frequencies of the sound (the x-axis is frequency and the y-axis is the amplitude, or strength of the frequencies). Time domain data can be generated through a microphone as it is a literal representation of the sound waves. The frequency domain data is much more complicated and requires a bit of math to extract from the time domain data. The rest of this paper will focus on understanding this process of moving from the time domain to the frequency domain.
 
 
-
 %----------------------------------MATH-----------------------------------------------------------------
-\subsection{Mathematical Preliminaries}
+\section{Mathematical Preliminaries}
 The following sections will serve both as an introduction to the mathematics of music as well as an exploration of various concepts through computer programs. Additionally, the process of moving between the time and frequency domains will be described and explored.
 
 %-------------------------PERIODIC FUNCTIONS------------------------------------------------------
-\subsubsection{Periodic Functions}
+\subsection{Periodic Functions}
 \hspace{\parindent} A \textbf{periodic function} is any function for which $f(t) = f(t + T) \: \text{for all} \: t$.
 The smallest constant $T$ which satisfies it is called the \textbf{period} of the function (it 'repeats' every $T$) \cite{hsu1970fourier}. The sine wave that represented the sound in figure \ref{fig:sound wave 1} is an example of a periodic function where $f(t)=A$sin$(\omega t+\varphi)$. Here $A$ is the amplitude, or the maximum deviation of the function from zero. $\omega=2\pi f$ where $f$ is the frequency, also denoted $\frac{1}{T}$, multiplied by $2\pi$ to convert it to an angular frequency (a measure of radians per second instead of cycles per second). Lastly, $\varphi$ specifies the phase of the wave (a measure, in radians, of where the oscillation is in within its cycle at $t=0$) \cite{sineWiki} \cite{angularFrequency}.
 
@@ -153,7 +165,7 @@ Moving now away from sound and music, we will dive into the Fourier analysis, wh
 
 
 %-------------------------ORTHOGONALITY------------------------------------------------------
-\subsubsection{Orthogonality of Vectors and Functions}
+\subsection{Orthogonality of Vectors and Functions}
 \hspace{\parindent} A \textbf{vector space} is any set that satisfies the defined axioms of addition and scalar multiplication. Details not listed here. An \textbf{inner product} is a function on a vector space which satisfies the following axioms: ($u$ and $v$ and $w$ are vectors in the vector space and $c$ is a scalar) \cite{shields1968linearalgebra}.
 \begin{enumerate}
     \item $\langle u, v \rangle = \langle v, u \rangle$
@@ -191,7 +203,7 @@ This property of sets of functions will provide usefully when working with compl
 
 
 %--------------------------COMPLEX EXPONENTIALS--------------------------------------
-\subsubsection{Complex Exponentials}
+\subsection{Complex Exponentials}
 \hspace{\parindent} Let $z$ be a complex number where $z = x + jy$ and $j = \sqrt{-1}$. An additional complex number to note is the complex conjugate $x - jy$, denoted $z^{\ast}$.
 
 The \textbf{complex exponential} is a formula of sorts which represents the distance traveled around a circle of radius 1. Denoted $e^{jx}$, this exponential gives us the location on a unit circle after walking $x$ units in a clockwise direction. The exponential $e^{-jx}$ will calculate the same location but after traveling in a counter clockwise direction. By adding $2\pi f$ to the exponential and changing the $x$ for a $t$ we get $e^{2\pi fjt}$. By adding the $2\pi ft$, where $f$ is the frequency and $t$ is time, we now discover that the formula makes $f$ full rotations of the unit circle every second. The counterclockwise rotation of our earlier formula holds here as well. By setting $\omega_0 = 2\pi f$, we have $e^{j\omega_0t}$.
@@ -260,7 +272,7 @@ And the proof is complete. \quad Q.E.D. \:\:  \cite{morrison1994fourier}.
 
 
 %---------------------------FOURIER SERIES----------------------------------------------------
-\subsubsection{Fourier Series}
+\subsection{Fourier Series}
 \hspace{\parindent} Using this property of orthogonality, let $f_p(t)$ be a periodic function with period $T_0$, and assume it can be expressed as an infinite sum of complex exponentials, that is, that
 
 \begin{equation} \label{eq:2.22}
@@ -446,8 +458,16 @@ The previous sections will serve as a basis for what the rest of the paper will 
 
 
 
+%----------------------- EXTRA INFORMATION / MORE INFO---------------------------------------------
+\section{Extra Information}
+
+%% Discuss the different ways cultures and people hear music/ sound.
+%% Specifically focus on synethsesia
+%% Maybe rediscuss the chromograph/ specrographs again.
+
+
 %------------------------METHODOLOGY, ALGORITHM, ETC.------------------------------
-\section{Methodology, Algorithm, Etc.}
+\section{Experiments and Implementations}
 
 \noindent \hspace{\parindent} With an understanding of the Fourier transform, we can use computers to create real-world examples. Starting in python, there are various libraries which facilitate real-time Fourier analysis. The library Scipy contains multiple Fast Fourier Transform functions which allow us to analyze a computer's microphone input in real-time. Additionally, as has already been mentioned, python has support for creatign and graphing sine functions and then using those functions to create audio files.
 
