@@ -4,6 +4,6 @@ This project's goal was to understand the mathematics behind music and how that 
 
 This repository contains both Poster and Paper.
 
-![alt text](https://github.com/matt0681/senior-project/Poster.PNG?raw=true)
+![alt text](https://github.com/matt0681/senior-project/blob/main/Poster.PNG?raw=true)
 
 Matthew Lad, 2022
