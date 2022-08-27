@@ -1,5 +1,0 @@
-
-
-%-----------------------SYNESTHESIA-------------------------------------------------------
-\subsubsection{Seeing Sounds as Colors}
-\hspace{\parindent} As this paper has a special focus in trying to understand the different colors that can represent sound, it is important to give the background behind this unique direction. The sensory disorder \textbf{synesthesia} is a disorder of the brain and specifically the five senses in which the signals from the senses are in a way mixed together. Thus someone with synesthesia when hearing a song, would see vibrant colours or smell a specific scent. Although it sounds strange to imagine someone's experience with synesthesia, almost every experience is different. Some find their synesthesia distracting and even crippling, while others find to be a pleasant addition to the music \cite{robertson2004synesthesia}.
